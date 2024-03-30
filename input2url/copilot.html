@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input to URL : Microsoft Copilot</title>
+</head>
+<body>
+<h4>Input to URL : Microsoft Copilot</h4>
+<input type="text" id="myInput" placeholder="テキストを入力">
+<button onclick="updateURL()">URLに反映</button>
+<script>
+	function updateURL() {
+	const inputValue = document.getElementById("myInput").value;
+	const encodedValue = encodeURIComponent(inputValue);
+	const currentURL = location.href.split("?")[0]; // Remove existing parameters
+	const newURL = `${currentURL}?myParam=${encodedValue}`;
+	window.history.replaceState({}, "", newURL); // Update URL without reloading
+}
+</script>
+</body>
+</html>

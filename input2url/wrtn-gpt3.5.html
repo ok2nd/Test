@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input to URL : リートン：ChatGPT GPT-3.5</title>
+</head>
+<body>
+<h4>Input to URL : リートン：ChatGPT GPT-3.5</h4>
+<input type="text" id="inputText">
+<a href="#" id="dynamicLink">リンク</a>
+<script>
+// テキストボックスの入力が変更されたときにURLを更新する関数
+function updateURL() {
+	var inputText = document.getElementById('inputText').value;
+	var dynamicLink = document.getElementById('dynamicLink');
+	dynamicLink.href = 'http://example.com/?param=' + encodeURIComponent(inputText);
+}
+// テキストボックスの入力が変更されたときにupdateURL関数を呼び出す
+document.getElementById('inputText').addEventListener('input', updateURL);
+</script>
+</body>
+</html>

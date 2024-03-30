@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input to URL : リートン：GPT-4 Turbo</title>
+</head>
+<body>
+<h4>Input to URL : リートン：GPT-4 Turbo</h4>
+<input type="text" id="textInput" placeholder="ここに入力">
+<!--<p>URL: <span id="urlDisplay">ここにURLが表示されます</span></p>-->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const textInput = document.getElementById('textInput');
+	const urlDisplay = document.getElementById('urlDisplay');
+	textInput.addEventListener('input', function() {
+		const encodedValue = encodeURIComponent(textInput.value);
+		const newUrl = `http://example.com/?param=${encodedValue}`;
+	//	urlDisplay.textContent = newUrl;
+		// URLの更新を実際に行いたい場合は、下記のコメントを解除
+		history.replaceState(null, null, `?param=${encodedValue}`);
+	});
+});
+</script>
+</body>
+</html>
