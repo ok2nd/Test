@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artwork</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+
+      #canvas {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+      var centerX = width / 2;
+      var centerY = height / 2;
+
+      var angle1 = 0;
+      var radius1 = 100;
+      var angle2 = 0;
+      var radius2 = 150;
+      var angle3 = 0;
+      var radius3 = 200;
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw first curve
+        ctx.beginPath();
+        ctx.moveTo(centerX + radius1 * Math.cos(angle1), centerY + radius1 * Math.sin(angle1));
+        ctx.quadraticCurveTo(centerX, centerY, centerX + radius1 * Math.cos(angle1 + 0.1), centerY + radius1 * Math.sin(angle1 + 0.1));
+        ctx.strokeStyle = "#FFF";
+        ctx.stroke();
+        angle1 += 0.1;
+
+        // Draw second curve
+        ctx.beginPath();
+        ctx.moveTo(centerX + radius2 * Math.cos(angle2), centerY + radius2 * Math.sin(angle2));
+        ctx.quadraticCurveTo(centerX, centerY, centerX + radius2 * Math.cos(angle2 + 0.15), centerY + radius2 * Math.sin(angle2 + 0.15));
+        ctx.strokeStyle = "#0FF";
+        ctx.stroke();
+        angle2 += 0.15;
+
+        // Draw third curve
+        ctx.beginPath();
+        ctx.moveTo(centerX + radius3 * Math.cos(angle3), centerY + radius3 * Math.sin(angle3));
+        ctx.quadraticCurveTo(centerX, centerY, centerX + radius3 * Math.cos(angle3 + 0.2), centerY + radius3 * Math.sin(angle3 + 0.2));
+        ctx.strokeStyle = "#F0F";
+        ctx.stroke();
+        angle3 += 0.2;
+      }
+
+      setInterval(draw, 20);
+    </script>
+  </body>
+</html>

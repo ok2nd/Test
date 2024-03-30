@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Abstruct Art with HTML, CSS, and Canvas</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="1300" height="900"></canvas>
+	<script src="script.js"></script>
+</body>
+<script>
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// キャンバスの背景を設定
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// 円を描画
+for (let i = 0; i < 500; i++) {			// 円の数
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height;
+  const r = Math.random() * 100;		// 円のサイズ
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+  const alpha = Math.random();
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  ctx.fillStyle = `rgba(${red},${green},${blue},${alpha})`;
+  ctx.fill();
+}
+
+</script>
+</html>

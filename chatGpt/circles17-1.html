@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Circles</title>
+	<style>
+
+
+
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+	</style>
+</head>
+<body>
+	<script>
+		const colors = ['#F9D5A7', '#F4A460', '#EE7600', '#FF4500', '#8B2500'];
+
+		function getRandomColor() {
+			return colors[Math.floor(Math.random() * colors.length)];
+		}
+
+		const numCircles = 1000;
+		const minRadius = 3;
+		const maxRadius = 25;
+
+		const containerWidth = window.innerWidth / 2;
+		const containerHeight = window.innerHeight / 2;
+		const centerX = containerWidth / 2;
+		const centerY = containerHeight / 2;
+		const a = containerWidth / 2;
+		const b = containerHeight / 2;
+
+		for (let i = 0; i < numCircles; i++) {
+			const circle = document.createElement('div');
+			circle.className = 'circle';
+
+			const radius = Math.floor(Math.random() * (maxRadius - minRadius + 1)) + minRadius;
+			const angle = Math.random() * Math.PI * 2;
+			const x = centerX + Math.cos(angle) * a * Math.random();
+			const y = centerY + Math.sin(angle) * b * Math.random();
+
+			circle.style.width = radius * 2 + 'px';
+			circle.style.height = radius * 2 + 'px';
+			circle.style.backgroundColor = getRandomColor();
+			circle.style.left = x - radius + 'px';
+			circle.style.top = y - radius + 'px';
+
+			document.body.appendChild(circle);
+		}
+	</script>
+</body>
+</html>

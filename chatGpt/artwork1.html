@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artwork</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+
+      #canvas {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var colors = ["#FF3F8E", "#04C2C9", "#2E294E", "#F5A503", "#F20D0D"];
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        for (var i = 0; i < colors.length; i++) {
+          ctx.fillStyle = colors[i];
+          var x = Math.random() * width;
+          var y = Math.random() * height;
+          var size = Math.random() * 100;
+          ctx.fillRect(x, y, size, size);
+        }
+      }
+
+      setInterval(draw, 1000);
+    </script>
+  </body>
+</html>

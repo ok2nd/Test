@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artwork</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+
+      #canvas {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+      var lineCount = 100;
+      var lines = [];
+
+      for (var i = 0; i < lineCount; i++) {
+        var line = {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          angle: Math.random() * 360,
+          speed: 1 + Math.random() * 3,
+          color: "#FFF"
+        };
+        lines.push(line);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          ctx.strokeStyle = line.color;
+          ctx.beginPath();
+          ctx.moveTo(line.x, line.y);
+          line.x += Math.cos(line.angle) * line.speed;
+          line.y += Math.sin(line.angle) * line.speed;
+          ctx.lineTo(line.x, line.y);
+          ctx.stroke();
+
+          if (line.x < 0 || line.x > width) {
+            line.angle = Math.PI - line.angle;
+          }
+          if (line.y < 0 || line.y > height) {
+            line.angle = 2 * Math.PI - line.angle;
+          }
+        }
+      }
+
+      setInterval(draw, 20);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Abstract Art with HTML, CSS, and Canvas</title>
+	<style>
+		canvas {
+			display: block;
+			margin: 0 auto;
+			border: 1px solid black;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas"></canvas>
+	<script src="script.js"></script>
+</body>
+<script>
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+// キャンバスの幅と高さ
+//const width = canvas.width = window.innerWidth;
+//const height = canvas.height = window.innerHeight;
+
+const width = canvas.width = 1200;
+const height = canvas.height = 800;
+
+// ランダムなグラデーションを設定
+const gradient = ctx.createLinearGradient(0, 0, width, height);
+gradient.addColorStop(0, getRandomColor());
+gradient.addColorStop(0.5, getRandomColor());
+gradient.addColorStop(1, getRandomColor());
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, width, height);
+
+// ランダムな線を描画
+for (let i = 0; i < 200; i++) {
+  ctx.beginPath();
+  ctx.moveTo(Math.random() * width, Math.random() * height);
+  ctx.lineTo(Math.random() * width, Math.random() * height);
+  ctx.strokeStyle = getRandomColor();
+  ctx.stroke();
+}
+
+// ランダムな色を返すヘルパー関数
+function getRandomColor() {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+  const alpha = Math.random();
+  return `rgba(${red},${green},${blue},${alpha})`;
+}
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball</title>
+    <style>
+      /* ボールのスタイル */
+      #ball {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ball"></div>
+
+    <script>
+      // ボールの初期位置と速度
+      let x = 50; // x座標
+      let y = 50; // y座標
+      let vx = 5; // x方向の速度
+      let vy = 2; // y方向の速度
+
+      // キャンバスのサイズ
+      const canvasWidth = document.documentElement.clientWidth;
+      const canvasHeight = document.documentElement.clientHeight;
+
+      // ボールを移動する関数
+      function moveBall() {
+        // ボールの位置を更新
+        x += vx;
+        y += vy;
+
+        // 壁に当たった場合の処理
+        if (x + 50 > canvasWidth || x < 0) {
+          vx = -vx;
+        }
+        if (y + 50 > canvasHeight || y < 0) {
+          vy = -vy;
+        }
+
+        // ボールの位置を反映
+        const ball = document.getElementById('ball');
+        ball.style.left = x + 'px';
+        ball.style.top = y + 'px';
+      }
+
+      // アニメーションを開始する関数
+      function startAnimation() {
+        setInterval(moveBall, 10); // 10ミリ秒ごとにmoveBall関数を呼び出す
+      }
+
+      // ページが読み込まれたらアニメーションを開始する
+      window.onload = startAnimation;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Abstract Art with Canvas</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="1200" height="800"></canvas>
+	<script src="script.js"></script>
+</body>
+
+<script>
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+// 背景を塗りつぶす
+ctx.fillStyle = "#000";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// パスを作成
+ctx.beginPath();
+
+// 波紋を描画する数
+// const circleNum = 50;
+// const circleNum = 500;
+const circleNum = 100;
+
+// 波紋を描画
+for (let i = 0; i < circleNum; i++) {
+  // ランダムな中心位置と半径を生成
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height;
+//  const r = Math.random() * 30 + 10;
+//  const r = Math.random() * 20 + 1;
+  const r = Math.random() * 20 + 1;
+
+  // ランダムな色を選択して描画
+//  const colors = ["#FFFF00", "#FFEBCD", "#F0E68C", "#FFEBCD", "#FDF5E6"];
+  const colors = ["#FFFF00", "#FFEBCD", "#F0E68C", "#FFEBCD", "#D8FFFF"];
+
+  const colorIndex = Math.floor(Math.random() * colors.length);
+  const color = colors[colorIndex];
+
+  // 波紋を描画
+  const gradient = ctx.createRadialGradient(x, y, 0, x, y, r);
+  gradient.addColorStop(0, color);
+  gradient.addColorStop(1, "#000");
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  ctx.fill();
+}
+
+
+</script>
+
+</html>

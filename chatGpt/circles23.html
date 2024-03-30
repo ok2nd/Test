@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Abstract Art with HTML, CSS, and JavaScript</title>
+	<style>
+		.triangle {
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 150px 260px 150px;
+			border-color: transparent transparent #F00 transparent;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+</head>
+<body>
+	<div class="triangle"></div>
+	<script src="script.js"></script>
+</body>
+<script>
+const triangle = document.querySelector(".triangle");
+
+// アニメーションの開始位置
+let rotation = 0;
+
+function animate() {
+	// 回転角度を増加
+	rotation += 0.5;
+
+	// スタイルを更新
+	triangle.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+	// ループ
+	requestAnimationFrame(animate);
+}
+
+// アニメーションを開始
+animate();
+
+</script>
+</html>
+

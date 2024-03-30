@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artwork</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #F9F9F9;
+      }
+
+      #canvas {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var width = canvas.width;
+      var height = canvas.height;
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        var centerX = width / 2;
+        var centerY = height / 2;
+        var radius = Math.min(width, height) / 3;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = "#EE4056";
+        ctx.fill();
+
+        for (var i = 0; i < 5; i++) {
+          var angle = i * ((2 * Math.PI) / 5);
+          var x = centerX + radius * Math.cos(angle);
+          var y = centerY + radius * Math.sin(angle);
+          var size = radius / 5;
+          ctx.beginPath();
+          ctx.arc(x, y, size, 0, 2 * Math.PI, false);
+          ctx.fillStyle = "#F9A03F";
+          ctx.fill();
+        }
+      }
+
+      draw();
+    </script>
+  </body>
+</html>
