@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input to URL : リートン：AI検索 </title>
+</head>
+<body>
+<body>
+<h4>Input to URL : リートン：AI検索 </h4>
+<input type="text" id="inputText" placeholder="テキストを入力してください">
+<script>
+// URLパラメータを更新する関数
+function updateURL() {
+	const inputValue = document.getElementById('inputText').value;
+	const url = new URL(window.location.href);
+	url.searchParams.set('inputValue', inputValue);
+	const newUrl = url.toString();
+	window.history.replaceState({}, '', newUrl);
+}
+// テキストボックスの入力が変更されたときにURLを更新
+document.getElementById('inputText').addEventListener('input', updateURL);
+</script>
+</body>
+</html>
