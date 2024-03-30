@@ -3,16 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Input to URL : リートン：Claude 2.1</title>
+<title>Input to URL : リートン：Claude Instant</title>
 </head>
 <body>
-<h4>Input to URL : リートン：Claude 2.1</h4>
-<input type="text" id="inputText" oninput="updateURL()">
+<h4>Input to URL : リートン：Claude Instant</h4>
+<input type="text" id="textbox">
 <script>
-function updateURL() {
-	var input = document.getElementById("inputText").value;
-	history.pushState(null, null, "?text=" + encodeURIComponent(input));
+const textbox = document.getElementById('textbox');
+textbox.addEventListener('keyup', updateUrl); 
+function updateUrl() {
+	const value = textbox.value;
+	// URL更新
+	window.history.pushState({}, '', `?query=${value}`);
 }
+window.addEventListener('popstate', () => {
+	const query = new URLSearchParams(location.search).get('query');
+	textbox.value = query;
+});
 </script>
 </body>
 </html>
