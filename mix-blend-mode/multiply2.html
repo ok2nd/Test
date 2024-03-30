@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>CSS：mix-blend-mode multiply (2)</title>
+<style>
+div {
+	position: relative;
+}
+img {
+	border: 1px #000 solid;
+	width: 400px;
+}
+.opacity > img {
+	opacity: 0.8;
+}
+.multiply > img {
+	mix-blend-mode: multiply;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+<h1>CSS：mix-blend-mode ≪multiply≫ JPEG テスト（２）</h1>
+<div>
+	<img src="image/001-g.jpg">
+	<img src="image/002-g.jpg">
+</div>
+<h3>≪opacity: 0.8≫</h3>
+<div class="opacity">
+	<img src="image/001-g.jpg">
+	<img src="image/002-g.jpg">
+</div>
+<h3>≪multiply≫</h3>
+<div class="opacity multiply" style="margin-bottom:400px;">
+	<img src="image/001-g.jpg">
+	<img src="image/002-g.jpg">
+</div>
+</body>
+</html>

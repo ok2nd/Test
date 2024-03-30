@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>CSS：mix-blend-mode multiply</title>
+<style>
+div {
+	position: relative;
+}
+img {
+	border: 1px #000 solid;
+}
+.multiply > img {
+	mix-blend-mode: multiply;
+	position: absolute;
+}
+</style>
+</head>
+<body>
+<h1>CSS：mix-blend-mode ≪multiply≫ JPEG テスト（１）</h1>
+<div>
+	<img src="image/320/red.jpg">
+	<img src="image/320/blue.jpg">
+	<img src="image/320/yellow.jpg">
+</div>
+<h3>≪multiply≫</h3>
+<div class="multiply">
+	<img src="image/320/red.jpg">
+	<img src="image/320/blue.jpg">
+	<img src="image/320/yellow.jpg">
+</div>
+</body>
+</html>
